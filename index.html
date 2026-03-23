@@ -30,11 +30,66 @@
     display:flex; justify-content:center; align-items:center;
     min-height:100vh; font-family:'DM Sans',sans-serif; padding:40px 20px;
   }
+
+  /* Cover overlay */
+  .cover {
+    position:fixed; inset:0; z-index:100;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    background:var(--bg); cursor:pointer;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .cover.opened {
+    opacity:0; pointer-events:none; transform:translateY(-100vh);
+  }
+  .cover-bar {
+    position:absolute; top:0; left:0; right:0; height:8px;
+    background: linear-gradient(90deg, var(--peach), var(--butter), var(--mint), var(--lavender), var(--sky), var(--rose));
+  }
+  .cover-content {
+    text-align:center; z-index:1;
+    opacity:0; animation:fadeUp .8s ease .3s forwards;
+  }
+  .cover-label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--lavender); font-weight:500; margin-bottom:24px;
+  }
+  .cover-name {
+    font-family:'Playfair Display',serif; font-weight:600; font-size:44px;
+    color:var(--charcoal); line-height:1.3; letter-spacing:1px;
+  }
+  .cover-amp {
+    font-family:'Source Serif 4',serif; font-style:italic; font-size:24px;
+    color:var(--lavender); font-weight:300; margin:8px 0;
+  }
+  .cover-prompt {
+    margin-top:40px; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--text-muted); font-weight:400;
+    animation:pulse 2s ease-in-out infinite;
+  }
+  .cover-flowers {
+    position:absolute; bottom:0; left:0; right:0;
+    width:100%; height:200px; object-fit:cover; object-position:bottom;
+  }
+  .cover-bar-bottom {
+    position:absolute; bottom:0; left:0; right:0; height:5px;
+    background: linear-gradient(90deg, var(--rose), var(--sky), var(--lavender), var(--mint), var(--butter), var(--peach));
+  }
+  @keyframes pulse {
+    0%,100% { opacity:0.4; }
+    50% { opacity:1; }
+  }
+
+  /* Card — hidden until cover opens */
   .card {
     background: var(--card-bg); width:100%; max-width:560px;
     position:relative; overflow:hidden;
     border-radius: 16px;
     box-shadow: 0 20px 60px rgba(244,168,150,0.12), 0 4px 20px rgba(195,177,225,0.08);
+    opacity:0; transform:translateY(20px);
+    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+  }
+  .card.revealed {
+    opacity:1; transform:translateY(0);
   }
 
   /* Pastel gradient top bar */
@@ -54,6 +109,8 @@
   }
 
   .inner { padding: 56px 48px; position:relative; z-index:1; }
+  .inner * { animation-play-state:paused !important; }
+  .card.revealed .inner * { animation-play-state:running !important; }
 
   /* Playful top decoration */
   .top-deco {
@@ -176,11 +233,27 @@
     .venue-content{flex-direction:column; gap:16px;}
     .flower-border{margin-top:-120px;}
     .closing{position:relative; z-index:2;}
+    .cover-name{font-size:32px;}
+    .cover-flowers{height:150px;}
   }
 </style>
 </head>
 <body>
-<div class="card">
+<!-- Cover -->
+<div class="cover" id="cover" onclick="openCard()">
+  <div class="cover-bar"></div>
+  <div class="cover-content">
+    <div class="cover-label">You're invited to celebrate</div>
+    <div class="cover-name">Pansupa</div>
+    <div class="cover-amp">and</div>
+    <div class="cover-name">Teesit</div>
+    <div class="cover-prompt">Tap to open</div>
+  </div>
+  <img class="cover-flowers" src="Wildflower Border Image.jpg" alt="" />
+  <div class="cover-bar-bottom"></div>
+</div>
+
+<div class="card" id="card">
   <div class="top-bar"></div>
 
   <!-- Scattered confetti dots -->
@@ -286,5 +359,15 @@
   <img class="flower-border" src="Wildflower Border Image.jpg" alt="" />
   <div class="bottom-bar"></div>
 </div>
+<script>
+var opened = false;
+function openCard() {
+  if (opened) return;
+  opened = true;
+  document.getElementById('cover').classList.add('opened');
+  document.getElementById('card').classList.add('revealed');
+}
+setTimeout(openCard, 3000);
+</script>
 </body>
 </html>
