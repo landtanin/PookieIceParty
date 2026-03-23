@@ -121,8 +121,12 @@
   }
   .venue-label {
     font-size:10px; letter-spacing:3px; text-transform:uppercase;
-    color: var(--text-muted); margin-bottom:8px; font-weight:500;
+    color: var(--text-muted); margin-bottom:12px; font-weight:500;
   }
+  .venue-content {
+    display:flex; align-items:center; justify-content:center; gap:24px;
+  }
+  .venue-info { text-align:center; }
   .venue-name {
     font-family:'Source Serif 4',serif; font-size:22px; font-weight:500;
     color: var(--charcoal); margin-bottom:4px;
@@ -130,15 +134,16 @@
   .venue-address {
     font-size:12px; color:var(--text-muted); line-height:1.6; font-weight:300;
   }
-
-  .map-wrapper {
-    margin:20px auto 28px; max-width:400px;
-    border-radius:12px; overflow:hidden;
-    border:2px solid var(--peach-light);
-    opacity:0; animation:fadeUp .8s ease 1.4s forwards;
+  .map-link {
+    display:inline-block; margin-top:12px; padding:8px 20px;
+    background:var(--peach-light); color:var(--coral); border-radius:20px;
+    font-size:12px; font-weight:500; text-decoration:none;
+    letter-spacing:0.5px; transition:background .2s;
   }
-  .map-wrapper iframe {
-    width:100%; height:170px; border:0; display:block;
+  .map-link:hover { background:var(--peach); color:#fff; }
+  .venue-qr img {
+    width:100px; height:100px; border-radius:8px;
+    border:2px solid var(--peach-light);
   }
 
   .closing {
@@ -241,16 +246,20 @@
 
     <div class="venue-section">
       <div class="venue-label">Venue</div>
-      <div class="venue-name">Arunvit Resort</div>
-      <div class="venue-address">
-        32 Moo 2, Muaklek-Namtok Jedsaonoi Road<br>
-        Phaya Yen, Pak Chong<br>
-        Nakhon Ratchasima 30320, Thailand
+      <div class="venue-content">
+        <div class="venue-info">
+          <div class="venue-name">Arunvit Resort</div>
+          <div class="venue-address">
+            32 Moo 2, Muaklek-Namtok Jedsaonoi Road<br>
+            Phaya Yen, Pak Chong<br>
+            Nakhon Ratchasima 30320, Thailand
+          </div>
+          <a href="https://maps.app.goo.gl/BV7QeYJZzmXqU7Pf9?g_st=ic" target="_blank" class="map-link">Open in Google Maps</a>
+        </div>
+        <div class="venue-qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fmaps.app.goo.gl%2FBV7QeYJZzmXqU7Pf9%3Fg_st%3Dic" alt="Scan for directions" />
+        </div>
       </div>
-    </div>
-
-    <div class="map-wrapper">
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCQL1x8F23_94RB3aTfO03Uw0kE5ZYS0tM&q=Arunwit+Farm+and+Resort,Pak+Chong,Nakhon+Ratchasima,Thailand" allowfullscreen loading="lazy"></iframe>
     </div>
 
     <div class="closing">
