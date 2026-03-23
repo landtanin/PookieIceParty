@@ -116,7 +116,7 @@
   }
 
   .venue-section {
-    text-align:center; margin-top:28px; margin-bottom:12px;
+    text-align:center; margin:28px 0;
     opacity:0; animation:fadeUp .8s ease 1.2s forwards;
   }
   .venue-label {
@@ -133,9 +133,10 @@
   }
   .venue-address a {
     font-size:12px; color:var(--text-muted); line-height:1.6; font-weight:300;
-    text-decoration:none; transition:color .2s;
+    text-decoration:underline; text-decoration-color:var(--peach-light);
+    text-underline-offset:2px; transition:text-decoration-color .2s, color .2s;
   }
-  .venue-address a:hover { color:var(--coral); text-decoration:underline; }
+  .venue-address a:hover { color:var(--coral); text-decoration-color:var(--coral); }
   .venue-qr { text-align:center; }
   .venue-qr img {
     width:80px; height:80px; border-radius:8px;
@@ -146,7 +147,7 @@
   }
 
   .closing {
-    text-align:center; margin-top:8px;
+    text-align:center; margin-top:20px;
     opacity:0; animation:fadeUp .8s ease 1.6s forwards;
   }
   .closing-text {
