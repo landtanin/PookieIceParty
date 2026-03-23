@@ -116,7 +116,7 @@
   }
 
   .venue-section {
-    text-align:center; margin-top:28px;
+    text-align:center; margin-top:28px; margin-bottom:12px;
     opacity:0; animation:fadeUp .8s ease 1.2s forwards;
   }
   .venue-label {
@@ -124,30 +124,29 @@
     color: var(--text-muted); margin-bottom:12px; font-weight:500;
   }
   .venue-content {
-    display:flex; align-items:center; justify-content:center; gap:24px;
+    display:flex; align-items:center; justify-content:center; gap:28px;
   }
   .venue-info { text-align:center; }
   .venue-name {
     font-family:'Source Serif 4',serif; font-size:22px; font-weight:500;
-    color: var(--charcoal); margin-bottom:4px;
+    color: var(--charcoal); margin-bottom:6px;
   }
-  .venue-address {
+  .venue-address a {
     font-size:12px; color:var(--text-muted); line-height:1.6; font-weight:300;
+    text-decoration:none; transition:color .2s;
   }
-  .map-link {
-    display:inline-block; margin-top:12px; padding:8px 20px;
-    background:var(--peach-light); color:var(--coral); border-radius:20px;
-    font-size:12px; font-weight:500; text-decoration:none;
-    letter-spacing:0.5px; transition:background .2s;
-  }
-  .map-link:hover { background:var(--peach); color:#fff; }
+  .venue-address a:hover { color:var(--coral); text-decoration:underline; }
+  .venue-qr { text-align:center; }
   .venue-qr img {
-    width:100px; height:100px; border-radius:8px;
+    width:80px; height:80px; border-radius:8px;
     border:2px solid var(--peach-light);
+  }
+  .venue-qr-caption {
+    font-size:9px; color:var(--text-muted); margin-top:4px; font-weight:300;
   }
 
   .closing {
-    text-align:center;
+    text-align:center; margin-top:8px;
     opacity:0; animation:fadeUp .8s ease 1.6s forwards;
   }
   .closing-text {
@@ -250,14 +249,16 @@
         <div class="venue-info">
           <div class="venue-name">Arunvit Resort</div>
           <div class="venue-address">
-            32 Moo 2, Muaklek-Namtok Jedsaonoi Road<br>
-            Phaya Yen, Pak Chong<br>
-            Nakhon Ratchasima 30320, Thailand
+            <a href="https://maps.app.goo.gl/BV7QeYJZzmXqU7Pf9?g_st=ic" target="_blank">
+              32 Moo 2, Muaklek-Namtok Jedsaonoi Road<br>
+              Phaya Yen, Pak Chong<br>
+              Nakhon Ratchasima 30320, Thailand
+            </a>
           </div>
-          <a href="https://maps.app.goo.gl/BV7QeYJZzmXqU7Pf9?g_st=ic" target="_blank" class="map-link">Open in Google Maps</a>
         </div>
         <div class="venue-qr">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fmaps.app.goo.gl%2FBV7QeYJZzmXqU7Pf9%3Fg_st%3Dic" alt="Scan for directions" />
+          <div class="venue-qr-caption">Scan for directions</div>
         </div>
       </div>
     </div>
